@@ -17,7 +17,7 @@ const ContactsList = () => {
     <>
       <Wraper>
         {filteredContacts().map(({ id, name, number }) => (
-          <li key={id} id={id}>
+          <li key={number} >
             {name}:{number}
             <Btn type="button" onClick={() => dispatch(removeContact(id))}>
               Delete
