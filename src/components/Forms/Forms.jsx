@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { Input, Btn, Title } from './Forms.styled';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from '../../redux/contactsSlice';
 import { customAlphabet } from 'nanoid';
 
 const ErrorText = styled.p`

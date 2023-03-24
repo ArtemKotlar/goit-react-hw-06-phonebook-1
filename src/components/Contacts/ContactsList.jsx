@@ -1,23 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { removeContact } from 'redux/contactsSlice';
+import { getFilterContacts } from '../../redux/selectors';
+import { removeContact } from '../../redux/contactsSlice';
 import { Wraper, Btn } from './Contacts.styled';
 
 const ContactsList = () => {
   const dispatch = useDispatch();
 
-  const contacts = useSelector(state => state.contacts.items);
-  const filter = useSelector(state => state.contacts.filter);
-
-  const filteredContacts = () =>
-    contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
+  const contacts = useSelector(getFilterContacts);
 
   return (
     <>
       <Wraper>
-        {filteredContacts().map(({ id, name, number }) => (
-          <li key={number} >
+        {contacts.map(({ id, name, number }) => (
+          <li key={id}>
             {name}:{number}
             <Btn type="button" onClick={() => dispatch(removeContact(id))}>
               Delete
